@@ -1,0 +1,23 @@
+<div class="full-page-takeover-header">
+    <div class="full-page-takeover-header-logo">
+        <p class="full-page-takeover-header-logo-title">Promo Yourself</p>
+    </div>
+    <div class="full-page-takeover-header-divider">
+    </div>
+    <div class="full-page-takeover-header-text font-weight-bold">
+        {{title}}
+    </div>
+    <div class="user-box">
+        <figure class="image is-48x48 m-r-sm">
+            <img class="is-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNLzZszQbQf6jkknIGI8A3rj-0BoEngyi9156njfrCjPED9_b2vw">
+        </figure>
+        <div class="m-r-sm m-b-sm">
+            Welcome {{authService.getUserNameAndRole().name | titlecase}}!
+        </div>
+    </div>
+    <ng-content select="[actionMenu]"></ng-content>
+    <div  class="full-page-takeover-header-button">
+        <ng-content select=[save] class="mr-2"></ng-content>
+       <ng-content select=[exitLink]></ng-content>
+    </div>
+</div>

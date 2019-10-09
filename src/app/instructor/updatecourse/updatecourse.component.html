@@ -1,0 +1,81 @@
+<app-instructor-header>
+    <button save class="button is-primary is-inverted is-medium is-outlined">
+        Save
+    </button>
+
+    <a exitLink routerLink="/instructor/courses" class="button is-danger is-medium is-inverted is-outlined">
+        Exit
+    </a>
+
+</app-instructor-header>
+<div>
+    <div class="course-manage">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-3 p-lg">
+                    <!-- <aside class="menu is-hidden-mobile"> -->
+                    <aside class="menu">
+                        <p class="menu-label">
+                            Course Editing
+                        </p>
+                        <ul class="menu-list">
+                            <li>
+                                <!-- display TargetStudents -->
+                                <a (click)="calcStep(1)" [ngClass]="stepCount ===1? 'is-active':'' " id="target">Target
+                                    Your Students
+                                </a>
+                            </li>
+                            <li>
+                                <!-- display LandingPage -->
+                                <a (click)="calcStep(2)" [ngClass]="stepCount ===2? 'is-active':'' ">
+                                    Course Landing Page
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="menu-label">
+                            Course Managment
+                        </p>
+                        <ul class="menu-list">
+                            <li>
+                                <!-- display Price -->
+                                <a (click)="calcStep(3)" [ngClass]="stepCount ===3? 'is-active':'' ">
+                                    Price
+                                </a>
+                            </li>
+                            <li>
+                                <!-- display Status -->
+                                <a (click)="calcStep(4)" [ngClass]="stepCount ===4? 'is-active':'' ">
+                                    Status
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+                <div class="column ">
+                    <div *ngFor="let targetStudent of coursesDeatils; let i = index;">
+                    <!-- TargetStudents -->
+                    <app-targetstudents *ngIf="stepCount === 1" [targetStudent]="targetStudent"
+                    (WSLValue)="getValue($event)" (requirementValue)="getRequirmentValue($event)">  
+
+                    </app-targetstudents>
+                    <!-- TargetStudents End -->
+                    </div>
+
+                    <!-- LandingPage -->
+                    <app-courselanding *ngIf="stepCount === 2"></app-courselanding>
+                    <!-- LandingPage End -->
+                    <!-- Price -->
+                    <div *ngFor="let coursePrice of coursesDeatils">
+                    <app-pricing *ngIf="stepCount === 3" [coursePrice] = "coursePrice"></app-pricing>
+                </div>
+                    <!-- Price End -->
+                    <!-- Status -->
+                    <div *ngFor="let courseStatus of coursesDeatils">
+                    <app-status *ngIf="stepCount === 4" [courseStatus]="courseStatus"></app-status>
+                </div>
+                    <!-- Status End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+.label-info {
+    font-size: 13px;
+    color: gray;
+    font-style: italic;
+  }
+  .course-manage {
+    padding-top: 40px;
+    .menu {
+      padding-top: 30px;
+      &-label {
+        font-size: 20px;
+        color: black;
+      }
+      &-list {
+        >li {
+          font-size: 18px;
+          margin-top: 10px;
+          > a {
+            &.is-active {
+              background-color: transparent;
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+    .card {
+      &-section {
+        padding: 40px;
+      }
+      &-header {
+        &-title {
+          padding: 0;
+          color: #8F99A3;
+          font-weight: 400;
+          font-size: 25px;
+        }
+      }
+    }
+  }
+  .button.is-primary.is-inverted.is-outlined{
+      margin-right: 10px !important;
+  }
+
+  a{
+      text-decoration: none;
+  }
+
+  .card-header-title {
+    color: #8F99A3;
+    font-size: 25px;
+    font-weight: 400; 
+}

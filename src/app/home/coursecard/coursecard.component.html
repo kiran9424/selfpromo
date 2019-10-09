@@ -1,0 +1,39 @@
+
+  <div class="container">
+    <h1 class="title">Featured Courses</h1>
+    <div class="columns">
+      <div class="column is-one-quarter">
+        <!-- CARD-ITEM -->
+        
+
+        <div class="card " *ngFor="let course of courses">
+          <div class="card-image">
+            <figure class="image is-4by2">
+              <img [src]="course.image || 'https://via.placeholder.com/150' " alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4">{{course.title}}</p>
+                <p class="subtitle is-6"><i>{{course.subtitle}}</i></p>
+              </div>
+            </div>
+            <div class="content">
+              {{course.description}}
+              <br>
+            </div>
+            <div class="price-box">
+              <span class="price">{{course.price}}$</span>
+              <span class="disc-price">{{course.discountedPrice}}$</span>
+            </div>
+          </div>
+          <footer class="card-footer">
+            <a href="#" class="card-footer-item">Learn More!</a>
+            <a target="_" :href="'#'" class="card-footer-item">Enroll</a>
+          </footer>
+        </div>
+        <!-- CARD-ITEM-END -->
+      </div>
+    </div>
+  </div>

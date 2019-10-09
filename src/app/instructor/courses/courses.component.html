@@ -1,0 +1,69 @@
+<div *ngIf="isInstructor()">
+    <app-instructor-header>
+        <div actionMenu>
+                <div class="full-page-takeover-header-button ">
+                    <a routerLink="/instructor/courses/create" class="button is-medium is-light ">
+                        New Course
+                    </a>
+                    <a routerLink="/home" class="button is-danger is-medium is-inverted is-outlined ">
+                        Student
+                    </a>
+                </div>
+            </div>
+    </app-instructor-header>
+    <div>
+        <div class="courses-page">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-8 is-offset-2">
+                        <h1 class="courses-page-title">Your Courses</h1>
+                        <h2 *ngIf="courses.length===0" class="courses-page-title">You dont have any courses.
+                            Please create the course</h2>
+                        <!-- Iterate Courses -->
+                        <div class="tile is-ancestor" *ngFor="let course of courses">
+                            <div class="tile is-parent is-12">
+                                <!-- Navigate to course manage page -->
+                                <a routerLink="/instructor/courses/{{course._id}}/update" class="tile tile-overlay-container is-child box">
+                                    <div class="tile-overlay">
+                                        <span class="tile-overlay-text">
+                                            Update Course
+                                        </span>
+                                    </div>
+                                    <div class="columns" >
+                                        <div class="column is-narrow">
+                                            <figure class="image is-4by2 is-128x128">
+                                                <img [src]="course.image || 'https://via.placeholder.com/150' "/>
+                                            </figure>
+                                        </div>
+                                        <div class="column">
+                                            <p class="title">
+                                                {{course.title}}
+                                            </p>
+                                            <p class="subtitle">
+                                                {{course.subtitle || 'No subtitle provided'}}
+                                            </p>
+                                            <span class="tag" [ngClass]="status('button',course.status)">{{course.status}}</span>
+                                        </div>
+                                        <div class="column is-narrow flex-centered">
+                                            <div class="price-title">
+                                                {{course.price || 0}} $ 
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+</div>

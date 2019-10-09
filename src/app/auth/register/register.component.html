@@ -1,0 +1,93 @@
+
+        <section class="hero is-success is-fullheight">
+         
+          <div class="hero-body">
+              
+            <div class="container has-text-centered">
+                <img *ngIf="isLoading" src="https://thumbs.gfycat.com/ResponsibleSoftAegeancat-size_restricted.gif" alt="loading">
+              <div class="column is-4 is-offset-4">
+                  <div class= "alert alert-danger" *ngIf="errors">
+                  
+                      {{errors | titlecase}}
+                   
+                  </div> 
+                <h3 class="title has-text-grey">Register</h3>
+                <p class="subtitle has-text-grey">Please register to proceed.</p>
+                <div class="box">
+                  <figure class="avatar">
+                    <img src="https://via.placeholder.com/300">
+                  </figure>
+                  <form [formGroup] ='signupForm' (ngSubmit)= "registerForm()">
+                  
+                    <div class="field">
+                      <div class="control">
+                        <input
+                          class="input is-large"
+                          type="text"
+                          placeholder="Name" required
+                          formControlName='name'>
+                        <div class="form-error" *ngIf="signupForm.controls['name'].invalid && signupForm.controls['name'].touched">
+                          <span class="help is-danger">Name is required</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="control">
+                        <input
+                          class="input is-large"
+                          type="email"
+                          placeholder="Your Email"
+                          required
+                          formControlName='email'>
+                        <div class="form-error"*ngIf="signupForm.controls['email'].invalid && (this.signupForm.controls['email'].dirty || this.signupForm.controls['email'].touched)" > 
+                          <span class="help is-danger" *ngIf="signupForm.controls['email'].errors.required">Email is required</span>
+                          <span class="help is-danger" *ngIf="signupForm.controls['email'].errors.pattern">Email address is not valid</span>
+                        </div>
+                      </div>
+                    </div>
+                   
+                    <div class="field">
+                      <div class="control">
+                        <input
+                          class="input is-large"
+                          type="password"
+                          placeholder="Your Password"
+                          autocomplete="new-password"
+                          formControlName='password'>
+                        <div class="form-error" *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
+                          <span class="help is-danger">Password is required</span>
+                          <!-- <span class="help is-danger">Password minimum length is 6 letters</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="control">
+                        <input
+                          class="input is-large"
+                          type="password"
+                          placeholder="Password Confirmation"
+                          autocomplete="off"
+                          formControlName='confirmPassword'>
+                        <div class="form-error" *ngIf="signupForm.controls['confirmPassword'].invalid && signupForm.controls['confirmPassword'].touched">
+                          <span class="help is-danger">Password is required</span>
+                          <!-- <span class="help is-danger">Password confirmation should be the same as password</span> -->
+                        </div>
+                      </div>
+                    </div>
+                    <button type="submit" class="button is-block is-info is-large is-fullwidth"
+                    [disabled]="signupForm.invalid">Register</button>
+                  </form>
+                </div>
+                <p class="has-text-grey">
+                  <a routerLink="/login">Login</a> &nbsp;·&nbsp;
+                  <a>Sign Up With Google</a> &nbsp;·&nbsp;
+                  <a href="../">Need Help?</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+    
+      
+      
+      

@@ -1,0 +1,117 @@
+<div *ngIf="isInstructor()">
+    <app-instructor-header>
+        <div exitLink class="full-page-takeover-header-button">
+            <a routerLink="/instructor/courses" class="button is-danger is-medium is-inverted is-outlined">
+                Exit
+            </a>
+        </div>
+    </app-instructor-header>
+
+    <div class="full-page-takeover-window">
+        <div class="full-page-takeover-page">
+            <!-- <="`Step 1 of 2`" exitLink="#" /> -->
+            <div class="full-page-takeover-header-bottom-progress">
+                <div style="width:50%" class="full-page-takeover-header-bottom-progress-highlight">
+                </div>
+            </div>
+
+            <div class="course-create full-page-takeover-container">
+                <div class="container">
+                    <form [formGroup]="stepForm">
+                        <div class="course-create-headerText ">
+                            <p class="btn btn-outline-warning ">Step {{step}} of 2</p>
+                        </div>
+
+                        <!-- STEP 1 of FORM  -->
+                        <div class="course-create-wrapper tab" *ngIf="step===1">
+                            <div class="course-create-headerText">
+                                Please choose title of your Course.
+                            </div>
+                            <h2 class="course-create-subtitle">
+                                No worries, you can change title later.
+                            </h2>
+                            <div class="course-create-form">
+                                <div class="course-create-form-group">
+                                    <div class="field course-create-form-field control has-icons-right">
+                                        <input maxLength="50" type="text" placeholder="e.g. Amazing Course in Flutter!"
+                                            class="input is-large" formControlName="title" name="title" required (keyup)="characterCount($event)">
+                                            <span class="icon is-small is-right"  >
+                                               {{maxLength}}
+                                            </span>
+                                        <div class="form-error"
+                                            *ngIf="stepForm.controls['title'].invalid && stepForm.controls['title'].touched">
+                                            <span class="help is-danger">
+                                                <b>Title is required</b>
+                                            </span>
+                                            <!-- <span class="help is-danger">Password confirmation should be the same as password</span> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <app-coursestep1 *ngIf="step===1" (step1Value)=stepValues($event)></app-coursestep1> -->
+                        <!-- STEP 1 END-->
+                        <!-- STEP 2 of FORM -->
+
+                        <div class="course-create-wrapper tab" *ngIf="step===2">
+                            <div class="course-create-headerText">
+                                What category best fits the knowledge you'll share?
+                            </div>
+                            <h2 class="course-create-subtitle">If you're not sure about the right category, you can
+                                change
+                                it
+                                later.</h2>
+                            <div class="course-create-form">
+                                <div class="course-create-form-group">
+                                    <div class="course-create-form-field">
+                                        <div class="select is-large">
+                                            <select formControlName="category" required>
+                                                <option [ngValue]="null">Select Category</option>
+                                                <option *ngFor="let category of categories"
+                                                    [ngValue]="category._id">
+                                                    {{category.category}}
+                                                </option>
+
+                                            </select>
+                                            <div class="form-error"
+                                                *ngIf="stepForm.controls['category'].invalid && stepForm.controls['category'].touched  ">
+                                                <span class="help is-danger text-left">
+                                                    <b>Category is required</b>
+                                                </span>
+                                                <!-- <span class="help is-danger">Password confirmation should be the same as password</span> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <app-coursestep2 *ngIf="step===2"></app-coursestep2> -->
+                        <!-- STEP 2 END -->
+
+                        <div class="full-page-footer-row">
+                            <div class="container">
+                                <div class="full-page-footer-col">
+                                    <div>
+                                        <button class="button is-large" (click)="decreaseStep() "
+                                            *ngIf="step>1">Previous</button>
+                                        <button class="button is-large float-right" (click)="increaseStep();"
+                                            *ngIf="step !==2"
+                                            [disabled]="stepForm.controls['title'].invalid">Continue</button>
+                                        <button class="confirm  float-right btn btn-success" *ngIf="step===2"
+                                            (click)="createCourse()" [disabled]="stepForm.invalid">Confirm</button>
+                                    </div>
+                                    <!-- <div v-else class="empty-container">
+                            </div> -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

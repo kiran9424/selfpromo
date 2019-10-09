@@ -1,0 +1,69 @@
+<div class="card manage-card">
+    <header class="card-header card-section">
+        <p class="card-header-title ">Target your Students</p>
+    </header>
+    <div class="card-content card-section">
+        <form #TargetStudentForm="ngForm">
+            <div>
+                <!-- Send a label through props -->
+                <label class="label">What will students learn</label>
+                <!-- Iterate lines here -->
+                <div class="multi-field field" *ngFor="let studentWSL of wsl; let i = index">
+                    <div class="control multi-control">
+                        <div class="multi-input-container">
+                            {{i}}
+                            <input class="input is-medium multi-input" type="text" placeholder="'Add Something Nice (:'"
+                                [(ngModel)]="studentWSL.value" name="WSL" [ngModelOptions]="{standalone: true}"
+                                (keypress)="emitEventWSL($event)">
+                        </div>
+                        <div class="btn-container">
+                            <!-- Delete the line -->
+                            <button type="button" class="button is-danger multi-button" (click)="deleteWSL(i)">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div >
+                <!-- Add the Line -->
+                <button type="button" class="m-b-sm button is-medium is-link is-outlined" (click)="addAnswer(); dirty()" [disabled]="!disable">
+                    Add an answer
+                </button>
+            </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="card-content card-section">
+        <form>
+            <div>
+                <!-- Send a label through props -->
+                <label class="label">What are the requirements</label>
+                <!-- Iterate lines here -->
+                
+                <div class="multi-field field" *ngFor="let req of requirements;let i = index">
+                    <div class="control multi-control" >
+                        <div class="multi-input-container">
+                            <input (keypress)="emitRequirement($event)" class="input is-medium multi-input" type="text"
+                                placeholder="'Add Something Nice (:'" [(ngModel)]="req.value"
+                                [ngModelOptions]="{standalone:true}">
+
+                        </div>
+                        <div class="btn-container">
+                            <!-- Delete the line -->
+                            <button type="button" class="button is-danger multi-button" (click)="deleteRequirement(i)">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add the Line -->
+                <button type="button" class="m-b-sm button is-medium is-link is-outlined"
+                    (click)="addAnswerRequirement()">
+                    Add an answer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

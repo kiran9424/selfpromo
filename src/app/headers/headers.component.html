@@ -1,0 +1,77 @@
+
+        <nav class="navbar is-active" role="navigation" aria-label="main navigation">
+          <div class="navbar-brand">
+            <a class="navbar-item" routerLink='/home'>
+              <h1 class="brand-title">Promo-Yourself</h1>
+            </a>
+            <!-- Adds click to open -->
+            <!-- Adds active class -->
+            <!-- <a @click="() => {}"
+               role="button"
+               class="navbar-burger burger"
+               aria-label="menu"
+               aria-expanded="false"
+               data-target="navbarBasicExample">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a> -->
+          </div>
+      
+          <!-- Adds active class -->
+          <div id="navbarBasicExample"
+               class="navbar-menu">
+            <div class="navbar-start">
+              
+                <a routerLink="/home"  class="navbar-item">
+                Home
+            </a>
+            <a   class="navbar-item">
+                Courses
+            </a>
+            <a href=""  class="navbar-item">
+                Blogs
+              </a>
+              <a href=""  class="navbar-item">
+                About
+              </a>
+              <a href=""  class="navbar-item">
+                  Cv
+              </a>
+            </div>
+      
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <!-- If Authenticated -->
+                  
+                    <figure class="image avatar is-48x48 m-r-sm" *ngIf="authService.isAuthenticated()">
+                      <img class="is-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNLzZszQbQf6jkknIGI8A3rj-0BoEngyi9156njfrCjPED9_b2vw">
+                    </figure>
+                    <div class="m-r-sm m-b-sm" *ngIf="authService.isAuthenticated()">
+                      Welcome {{ this.authService.getUserNameAndRole().name|titlecase}}!
+                    </div>
+                    <!-- If Admin -->
+                    <button routerLink="/instructor" class="button is-link is-outlined" *ngIf="authService.isAuthenticated() && authService.getUserNameAndRole().role ==='admin'">
+                      Instructor
+                    </button>
+                    <a class="button is-primary" *ngIf="authService.isAuthenticated()" (click)="logout()">
+                      Logout
+                    </a>
+                  
+                  
+                    <a routerLink="/register" class="button is-primary" *ngIf="!authService.isAuthenticated()">
+                      Sign up
+                    </a>
+                    <a routerLink="/login" class="button is-light" *ngIf="!authService.isAuthenticated()">
+                      Log in
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      
+      
+     
