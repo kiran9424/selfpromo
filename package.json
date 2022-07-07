@@ -22,7 +22,7 @@
     "@auth0/angular-jwt": "^3.0.0",
     "bootstrap": "^4.3.1",
     "bulma": "^0.7.5",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "ngx-cookie-service": "^2.2.0",
     "ngx-toastr": "^11.0.0",
     "rxjs": "~6.4.0",
